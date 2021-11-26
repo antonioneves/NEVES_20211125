@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=api
+      - POSTGRES_PASSWORD=api
+      - POSTGRES_DB=videos
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./data/postgres-data:/var/lib/postgresql/data
