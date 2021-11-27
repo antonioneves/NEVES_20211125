@@ -21,7 +21,7 @@ const video = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    url: {
+    path: {
       type: DataTypes.STRING,
       allowNull: false,
     },

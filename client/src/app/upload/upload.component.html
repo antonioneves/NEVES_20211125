@@ -1,0 +1,69 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Upload new video</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form #videoForm="ngForm" (ngSubmit)="onSubmit(videoForm.value)">
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="inputTitle" class="col-form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          name="title"
+          placeholder="Enter video title"
+          required
+          ngModel
+        />
+      </div>
+      <div class="form-group">
+        <label for="selectCategory" class="col-form-label">Category</label>
+        <select
+          class="custom-select"
+          id="selectCategory"
+          name="categoryId"
+          required
+          ngModel
+        >
+          <option value='' selected disabled>Select video category</option>
+          <option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="videoFile" class="form-label">Video file</label>
+        <input
+          class="form-control file-upload"
+          type="file"
+          accept=".mp4,.mov"
+          name="videoFile"
+          (change)="handleFileInput($event)"
+          required
+          ngModel
+        />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="submit"
+        [disabled]="!videoForm.valid"
+        class="btn btn-outline-dark"
+        (click)="modal.close('Save click')"
+      >
+        <fa-icon [icon]="faUpload"></fa-icon>&nbsp;Upload
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<button class="btn btn-outline-success my-2 my-sm-0" (click)="open(content)">
+  <fa-icon [icon]="faUpload"></fa-icon>&nbsp;Upload
+</button>

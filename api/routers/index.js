@@ -1,6 +1,7 @@
 const express = require("express");
 
 const videosRouter = require("./videos");
+const categoriesRouter = require("./categories");
 
 const router = express.Router();
 
@@ -9,5 +10,6 @@ router.get("/", (req, res) => {
 });
 
 router.use("/videos", videosRouter);
+router.use("/categories", categoriesRouter);
 
 module.exports = router;

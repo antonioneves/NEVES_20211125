@@ -46,4 +46,7 @@ testem.log
 Thumbs.db
 
 # Database files
-/data
+/postgres-data
+
+# Uploaded files
+/public
