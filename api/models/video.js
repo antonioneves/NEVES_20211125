@@ -31,13 +31,6 @@ const video = (sequelize, DataTypes) => {
     },
   });
 
-  Video.associate = (models) => {
-    Video.belongsTo(models.Category, {
-      foreignKey: "categoryId",
-      onDelete: "CASCADE",
-    });
-  };
-
   return Video;
 };
 

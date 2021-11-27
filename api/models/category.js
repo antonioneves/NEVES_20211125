@@ -19,13 +19,6 @@ const category = (sequelize, DataTypes) => {
     }
   );
 
-  Category.associate = (models) => {
-    Category.hasMany(models.Video, {
-      foreignKey: "categoryId",
-      as: "video",
-    });
-  };
-
   return Category;
 };
 
