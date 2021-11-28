@@ -1,0 +1,14 @@
+{
+  "name": "videos-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "(cd api && npm start) & (cd client && npm start) ",
+    "install": "(cd api && npm install) & (cd client && npm install)",
+    "start-db": "(cd api && npm run start-db)",
+    "seed-db": "(cd api && npm run seed-db)"
+  },
+  "author": "Antonio Neves",
+  "license": "ISC",
+  "dependencies": {}
+}
