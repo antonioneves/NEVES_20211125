@@ -1,0 +1,29 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ video.title }}</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="video">
+      <video controls autoplay playsInline loop preload="auto" #videoPlayer>
+        <source src="{{url}}" type="video/mp4" />
+        Browser not supported
+      </video>
+    </div>
+  </div>
+</ng-template>
+
+<button class="card" (click)="open(content)">
+  <img class="card-img-top" [src]="video.image" title="{{ video.title }}" />
+  <div class="card-body">
+    <p class="card-text">{{ video.title }}</p>
+    <p class="card-text small">{{ video["category.name"] }}</p>
+  </div>
+</button>

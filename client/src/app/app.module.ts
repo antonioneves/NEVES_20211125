@@ -7,14 +7,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UploadComponent } from './upload/upload.component';
-import { HomeComponent } from './home/home.component';
+import { VideoComponent } from './video/video.component';
 
 import { ApiHttpService } from './services/api-http.service';
 
 @NgModule({
-  declarations: [NavbarComponent, UploadComponent, HomeComponent],
+  declarations: [
+    NavbarComponent,
+    UploadComponent,
+    VideoComponent,
+    HomeComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

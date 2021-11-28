@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IconDefinition, faUpload } from '@fortawesome/free-solid-svg-icons';
 

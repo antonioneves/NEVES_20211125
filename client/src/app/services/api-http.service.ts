@@ -15,6 +15,10 @@ export class ApiHttpService {
     return this.http.get<object[]>(Constants.API_URL + '/videos');
   }
 
+  public getVideoPlay(videoId: number) {
+    return Constants.API_URL + '/videos/videoPlay?videoId=' + videoId;
+  }
+
   public fileUpload(file: File, fileInfo: Object) {
     const formData = new FormData();
     formData.append('file', file);
