@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IconDefinition, faUpload } from '@fortawesome/free-solid-svg-icons';
@@ -12,11 +11,11 @@ import { ApiHttpService } from '../services/api-http.service';
   styleUrls: ['./upload.component.sass'],
 })
 export class UploadComponent {
-  closeResult: string = '';
   faUpload: IconDefinition = faUpload;
-  videoTitle: string = '';
   categories: any = [];
   fileToUpload: File | null = null;
+
+  @Output() newVideoEvent = new EventEmitter<object>();
 
   constructor(
     private modalService: NgbModal,
@@ -30,7 +29,7 @@ export class UploadComponent {
   open(content: any) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
-      .result.then();
+      .result.then(console.log, console.log);
   }
 
   handleFileInput(event: Event) {
@@ -38,8 +37,16 @@ export class UploadComponent {
   }
 
   onSubmit(value: Object): void {
-    if (this.fileToUpload) this.apiServices.fileUpload(this.fileToUpload, value).subscribe((res) => {
-      console.log(res);
-    });;
+    if (this.fileToUpload)
+      this.apiServices
+        .fileUpload(this.fileToUpload, value)
+        .subscribe((res: any) =>
+          {
+            res['category.name'] = this.categories.find(
+              (category: any) => category.id === res.categoryId
+            ).name;
+            this.newVideoEvent.emit(res);
+            this.fileToUpload = null;
+          });
   }
 }

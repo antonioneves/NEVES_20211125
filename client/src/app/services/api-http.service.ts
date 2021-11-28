@@ -11,6 +11,10 @@ export class ApiHttpService {
     return this.http.get<object[]>(Constants.API_URL + '/categories');
   }
 
+  public getVideos() {
+    return this.http.get<object[]>(Constants.API_URL + '/videos');
+  }
+
   public fileUpload(file: File, fileInfo: Object) {
     const formData = new FormData();
     formData.append('file', file);

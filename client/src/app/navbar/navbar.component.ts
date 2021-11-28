@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import{ Constants } from '../config/constants';
 
 @Component({
@@ -8,4 +8,10 @@ import{ Constants } from '../config/constants';
 })
 export class NavbarComponent {
   title = Constants.SiteTitle;
+
+  @Output() newVideoEvent = new EventEmitter<object>();
+
+  forwardNewVideo(video: object) {
+    this.newVideoEvent.emit(video);
+  }
 }

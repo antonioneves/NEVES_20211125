@@ -12,23 +12,14 @@ const video = (sequelize, DataTypes) => {
     thumbnail256: {
       type: DataTypes.BLOB,
       allowNull: false,
-      get() {
-        return this.getDataValue('picture').toString('utf8');
-      },
     },
     thumbnail128: {
       type: DataTypes.BLOB,
       allowNull: false,
-      get() {
-        return this.getDataValue('picture').toString('utf8');
-      },
     },
     thumbnail64: {
       type: DataTypes.BLOB,
       allowNull: false,
-      get() {
-        return this.getDataValue('picture').toString('utf8');
-      },
     },
     path: {
       type: DataTypes.STRING,

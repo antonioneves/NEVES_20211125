@@ -33,16 +33,16 @@ let thumbnail256Writable = new Writable({
 const { video, category } = require("../models");
 
 router.get("/", async (req, res) => {
-  res.json(
-    await video.findAll({
-      include: [
-        {
-          model: category,
-          as: "category",
-        },
-      ],
-    })
-  );
+  const videos = await video.findAll({
+    raw: true,
+    include: [
+      {
+        model: category,
+        as: "category",
+      },
+    ],
+  });
+  res.json(videos);
 });
 
 router.post("/", async (req, res) => {
