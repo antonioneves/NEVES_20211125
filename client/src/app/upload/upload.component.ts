@@ -13,6 +13,7 @@ export class UploadComponent {
   faUpload: IconDefinition = faUpload;
   categories: any = [];
   fileToUpload: File | null = null;
+  maxSize: number = 200 * 1024 * 1024;
 
   @Output() newVideoEvent = new EventEmitter<object>();
 
@@ -33,6 +34,11 @@ export class UploadComponent {
 
   handleFileInput(event: Event) {
     this.fileToUpload = (<any>event.target).files.item(0);
+    if (this.fileToUpload && this.fileToUpload.size > this.maxSize) {
+      alert('File size is too big');
+      (<any>event.target).value = null;
+      this.fileToUpload = null;
+    }
   }
 
   onSubmit(value: Object): void {

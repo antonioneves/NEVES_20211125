@@ -54,7 +54,7 @@
     <div class="modal-footer">
       <button
         type="submit"
-        [disabled]="!videoForm.valid"
+        [disabled]="!videoForm.valid || !this.fileToUpload"
         class="btn btn-outline-dark"
         (click)="modal.close('Save click')"
       >
